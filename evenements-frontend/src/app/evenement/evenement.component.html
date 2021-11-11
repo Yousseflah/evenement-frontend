@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="card">
+        <h3 class="text-center"> Liste des évenements</h3>
+        <div class = "card-body">
+            <table class = "table table-striped">
+                <thead>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Date debut</th>
+                    <th>Date fin</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let evenement of evenements">
+                        <td> {{evenement.nom}} </td>
+                        <td> {{evenement.description}} </td>
+                        <td> {{evenement.debut}} </td>
+                        <td> {{evenement.fin}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form #addForm="ngForm" (ngSubmit)="onAddEvenement(addForm)">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Nom événement</label>
+              <input type="text" class="form-control" ngModel name="nom" id="nom" placeholder="Nom événement" max="32" required>
+            </div>
+
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Description</label>
+              <input type="text" class="form-control" ngModel name="description" id="description" placeholder="Description" required>
+            </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Date début</label>
+                <input type="text" class="form-control" ngModel name="debut" id="debut" placeholder="Date début" required>
+            </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Date fin</label>
+                <input type="text" class="form-control" ngModel name="fin" id="fin" placeholder="Date fin" required>
+            </div>
+
+            <div class="modal-footer">
+                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save</button>
+            </div>
+
+          </form>
+    </div>
+</div>
